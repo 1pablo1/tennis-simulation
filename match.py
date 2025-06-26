@@ -355,14 +355,12 @@ class Point:
         return probability
 
 
-if __name__ == '__main__':
-    from collections import defaultdict
-
-    win_probability = 0.55
+def simulate(win_probability: float, num_simulations: int):
     player_1 = Player('P1')
     player_2 = Player('P2')
-    counter = defaultdict(list)
-    for _ in range(10000):
+    matches = []
+    winned_matches = 0
+    for _ in range(num_simulations):
         match = Match(
             player_1,
             player_2,
@@ -371,7 +369,12 @@ if __name__ == '__main__':
             max_sets=3
         )
         match.predict()
-        counter[str(match.winner)].append(match)
-        # print(match.formatted_result())
-    for k, v in counter.items():
-        print(k, len(v))
+        if match.winner == match.player1:
+            winned_matches += 1
+    return matches, winned_matches / num_simulations
+
+
+if __name__ == '__main__':
+
+    _, win_percentage = simulate(0.5, 1000)
+    print(win_percentage)
