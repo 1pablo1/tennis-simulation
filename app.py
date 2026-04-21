@@ -484,7 +484,7 @@ def mostrar_simulacion_juegos(resultados, p_teorica, n_simulations, punto_de_oro
         if not punto_de_oro:
             st.markdown("Calcular la probabilidad de un juego tradicional es complejo porque los caminos son infinitos (debido al Deuce). Usamos una fórmula basada en cadenas de Markov y series geométricas:")
             st.latex(r"P(Juego) = p^4 + 4p^4q + 10p^4q^2 + \frac{20p^3q^3 \cdot p^2}{1 - 2pq}")
-            st.markdown("""
+            st.markdown(r"""
             Donde los coeficientes salen de usar técnicas de recuento (Combinatoria / Permutaciones con Repetición) para ver las formas de ordenar los puntos ganados ($p$) y perdidos ($q$) antes del punto decisivo:
             - **$p^4$**: Ganar en blanco (40-0). Solo hay 1 camino directo.
             - **$4p^4q$**: Ganar a 15 (40-15). Hay $C(4,3) = 4$ caminos para llegar al 40-15 y luego ganas el punto final.
